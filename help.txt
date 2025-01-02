@@ -1,0 +1,40 @@
+//기본 명령어 관련
+mkdir 폴더명 : 폴더를 생성한다.
+touch 파일명 : 파일을 생성한다.
+ls : 현재위치의 폴더에서 하위 파일과 폴더들을 보여준다.
+pwd : 현재위치를 알려준다.
+cd 폴더명 : 폴더위치로 이동한다.
+
+//Git 연결 관련 명령어
+git config --global --list : Git 연결설정을 확인한다.
+git config --global user.name "프로필 이름" : 이름을 등록한다.
+git config --global user.email "이메일 주소" : 이메일을 등록한다.
+git init : 현재 위치를 main 브랜치로 설정한다.
+*git init 의 특징
+ 1. git 로컬장소가 생성되고, .git폴더가 숨김폴더로 생성된다.
+ 2. main브랜치가 생성된다.
+*default 브랜치가 main이 아닐땐? <git config --global init.defaultBranch main> 을 입력한다.
+
+//Git 브랜치관련 명령어
+git branch : 현재 위치에서 생성된 브랜치들을 보여준다.
+git branch -a : 로컬,원격 브랜치 둘 다 보여준다.
+git branch -r : 원격 브랜치만 보여준다.
+git branch 브랜치명 : 브랜치를 생성한다. (한개씩만 된다.)
+git branch -d 브랜치명 : 로컬브랜치를 삭제한다. (여러개 가능)
+git push origin --delete 브랜치명 : 원격브랜치를 삭제한다.
+git checkout 브랜치명 : 해당 브랜치로 이동한다.
+git checkout -b 브랜치명 : 해당 브랜치가 없으면 생성하고 이동한다. (굳이?)
+git merge 대상브랜치 : 대상브랜치를 현재브랜치랑 병합한다.
+
+//원격저장소 관련 명령어
+git add 파일명 : 커밋파일을 추가한다.
+git commit -m "메시지" : 커밋메시지와 함께 커밋을 남긴다.
+git push origin 브랜치명 : 해당 브랜치를 원격저장소에 업로드한다. (main은 브랜치명에 main입력하면 됨.)
+*협업할땐 직업 main에 업로드할 일 없지만 개인프로젝트의 경우 혼자서 main 업로드할일 많을듯하다.
+
+//Git 알아두면 좋은 명령어
+git status : 스테이징의 작업상태 확인
+git log : git 로그를 확인한다. (Q를 눌러 긴 로그를 탈출 가능.)
+git log --oneline : git로그를 한줄로 볼수있다.
+git log --all : 모든 브랜치로그를 볼수있다.
+git log --graph : 로그를 그래프형태로 볼수 있다.
