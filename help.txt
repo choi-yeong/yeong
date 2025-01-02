@@ -9,6 +9,7 @@ cd 폴더명 : 폴더위치로 이동한다.
 git config --global --list : Git 연결설정을 확인한다.
 git config --global user.name "프로필 이름" : 이름을 등록한다.
 git config --global user.email "이메일 주소" : 이메일을 등록한다.
+git remote add origin https://github.com/이름/저장소명.git :Git원격저장소 주소를 연결한다.
 git init : 현재 위치를 main 브랜치로 설정한다.
 *git init 의 특징
  1. git 로컬장소가 생성되고, .git폴더가 숨김폴더로 생성된다.
