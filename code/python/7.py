@@ -48,3 +48,18 @@ print(fluits.items()) #키와 값을 출력
 
 fluits.clear()
 print(fluits)
+
+"""
+내장함수
+sum():숫자 시퀀스의 모든 요소를 더해 합계를 반환
+ 시퀀스 : 문자열, 리스트, 튜플, reange() 등
+max() : 최대값 반환
+min() : 최소값 반환
+len() : 길이 반환
+zip() : 여러시퀀스를 병렬로 묶음.
+ 길이가 짧은 시퀀스에 맞춰서 반환
+"""
+names=["Alice","Bob","Charlie"]
+scores=[85,90,95,100]
+print(list(zip(names,scores))) #list 리스트로 출력
+print(dict(zip(names,scores))) #dict 딕셔너리로 출력
