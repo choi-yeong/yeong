@@ -1,4 +1,3 @@
-
 #과제 자판기 프로그램
 """
 vanding_machine=['게토레이','게토레이','레쓰비','레쓰비','생수','생수','이프로']
@@ -55,7 +54,6 @@ def is_drink(drink):
     if drink in vanding_machine:
         return drink
     else :
-        print("해당 드링크는 존재하지 않습니다.")
         return
 #3. 음료수를 추가하는 함수
 def add_drink(drink):
@@ -75,3 +73,25 @@ def remove_drink(drink):
     else :
         print("그런 음료수는 없습니다.")
     return
+
+
+while 1 :
+    user=int(input("사용자 종류를 입력하세요:\n1.소비자\n2.주인\n그외. 종료\n"))
+    if user==1:
+        drink=input("마시고 싶은 음료는?")
+        remove_drink(is_drink(drink))
+        check_machine()
+    elif user==2:
+        doing=int(input("할 일 선택:\n1.추가\n2.삭제\n"))
+        if doing==1:
+            drink=input("추가 할 음료는?")
+            add_drink(drink)
+        elif doing==2:
+            drink=input("제거 할 음료는?")
+            remove_drink(drink)
+        else :
+            print("알 수 없는 행동입니다.")
+        check_machine()
+    else :
+        print("자판기를 종료합니다.")
+        break
