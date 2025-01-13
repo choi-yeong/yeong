@@ -24,6 +24,13 @@ def avg_dgre(city):
             count +=1
         else:
             pass
+    """
+    사실 더 좋은 코드가 있긴하다.
+    for date in weather_data :  #이러면 date에 weater_data 리스트숫자만큼 반복한다.
+       if date[1]==city: #input으로 넣었던 city값이 weater_data의 1번인덱스("도시이름")과 같으면 조건문 실행
+         total +=data[2] #total에 data[2]을 더해준다. data[2]는 기온이다.
+         count += 1 #카운트를 세알려서 토탈에 나눠주면 평균값이 나온다.
+    """
     return sum/count
 #최고/저 기온
 def max_min(city):
@@ -40,6 +47,12 @@ def max_min(city):
                 pass
         else:
             pass
+    """
+    더 좋은 코드가 있긴하다.
+    if not temperturea():
+     temp=filter(lambda:x:x[1]==city,weather_data) #도시추출
+     temperatures = list(map(lambdax:x[2],temp)) #기온 추출
+    """
     return max, min
 #강수량분석
 def rain(city):

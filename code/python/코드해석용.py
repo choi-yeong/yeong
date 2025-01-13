@@ -19,6 +19,7 @@ def cal_temp(n):
     for i in range(len(temperature_list)):
         total_temp += temperature_list[i]
         count += 1
+    
 
     return total_temp / count
 
