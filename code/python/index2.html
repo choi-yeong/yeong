@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        a:hover {
+            color :red
+        }
+        a:active{
+            color:blue
+        }
+        input:focus{
+            background-color: aqua;
+        }
+        .fruits span:first-child{
+            color : orange
+        }
+        .fruits h3:last-child{
+            color: red;
+        }
+        .fruits *:nth-child(2n){ /*2n번째(짝수)를 적용*/
+            color:blue
+        }
+        .fruits *:not(span){
+            color:yellowgreen
+        }
+        .box::before{/*앞 컨텐츠*/
+            content: "앞!";
+            color:red;
+        }
+        .box::after{/*뒤 컨텐츠*/
+            content: "뒤!";
+            color:orange
+        }
+        [disabled]{
+            background-color:rgb(194, 139, 139);
+        }
+        [type="password"]{
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body><!--
+    <div>
+        <a href="https://naver.com">네이버</a><br>
+        <input type="text" />
+    </div>
+    <div class="fruits">
+        <span>딸기</span>
+        <span>수박</span>
+        <div>오렌지</div>
+        <div>귤</div>
+        <div>바나나</div>
+        <p>망고</p>
+        <p>파인애플</p>
+        <h3>사과</h3>
+    </div>-->
+    <div class="box">
+        컨텐츠
+    </div>
+    <div>
+        <input type="text"><br> <!--평범한 인풋창-->
+        <input type="text" disabled><br> <!--선택조차 불가능하다.-->
+        <input type="text" readonly><br> <!--읽을수만 있고 쓸순 없다.-->
+        <input type="text" value="abcdefg" readonly><br> <!--읽을수만 있고 쓸순 없다.-->
+        <input type="password" value="abcdefg" readonly><br> <!--읽을수만 있고 쓸순 없다.-->
+    </div>
+</body>
+</html>
