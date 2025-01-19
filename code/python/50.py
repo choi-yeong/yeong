@@ -11,7 +11,7 @@ import time, random
 chrome_option = Options()
 #옵션추가
 # chrome_option.add_argument("--start-maximized") #최대크기로 열기
-chrome_option.add_argument("--headless") #GUI창 안열고 백그라운드 실행(리소스절약)
+# chrome_option.add_argument("--headless") #GUI창 안열고 백그라운드 실행(리소스절약)
 
 service=Service() #냅두시오 
 driver = webdriver.Chrome(service=service, options=chrome_option)
@@ -121,12 +121,13 @@ driver = webdriver.Chrome(service=service, options=chrome_option)
 driver.get("https://www.nate.com/")
 time.sleep(2)
 search_input=driver.find_element(By.XPATH,'//*[@id="q"]')
-search_input.send_keys("파이썬")
-search_input.send_keys(Keys.ENTER)
-time.sleep(2)
-driver.save_screenshot("python.png")
+print(search_input)
+#search_input.send_keys("파이썬")
+#search_input.send_keys(Keys.ENTER)
+#time.sleep(2)
+#driver.save_screenshot("python.png")
 
-input("")
+#input("")
 #--------------------------------------------------------------------
 # --start-maximized : 브라우저를 최대화된 상태로 실행
 # --window-size=width,height : 브라우저 크기를 지정 (예: --window-size=1920,1080)
