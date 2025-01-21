@@ -90,22 +90,153 @@ df=pd.DataFrame(data,index=['a','b','c'])
 
 #데이터를 넣고 추가/수정 하는 방법 ############
 #행추가(커스텀 인덱스를 초기화하는 방법)
-new_data={'name':'이몽룡', "age":31, "city":"Pohang"}
-result = pd.concat([df,pd.DataFrame([new_data])], ignore_index=True) #concat :배열합치기
-print(result)
-#행추가(커스텀 인덱스를 부여하여 concat으로 합치는 방법)
-new_data=pd.DataFrame({'name':'이몽룡', "age":31, "city":"Pohang"}, index=["d"])
-result = pd.concat([df,new_data]) #concat :배열합치기
-print(result)
-# !append를 쓰는 방법은 신버전에서 막힘. 대신 loc로 추가 가능.
-result.loc["e"]=["전우치",28,"Daejeon"]
-print(result)
+# new_data={'name':'이몽룡', "age":31, "city":"Pohang"}
+# result = pd.concat([df,pd.DataFrame([new_data])], ignore_index=True) #concat :배열합치기
+# print(result)
+# #행추가(커스텀 인덱스를 부여하여 concat으로 합치는 방법)
+# new_data=pd.DataFrame({'name':'이몽룡', "age":31, "city":"Pohang"}, index=["d"])
+# result = pd.concat([df,new_data]) #concat :배열합치기
+# print(result)
+# # !append를 쓰는 방법은 신버전에서 막힘. 대신 loc로 추가 가능.
+# result.loc["e"]=["전우치",28,"Daejeon"]
+# print(result)
 
-#열추가
-result['job']=['Enginner','Doctor','Diginer','Programer','DataAnalogist']
-print(result)
+# #열추가
+# result['job']=['Enginner','Doctor','Diginer','Programer','DataAnalogist']
+# print(result)
 
-#요소값 수정
-result.at["a", 'city']="Choenan" # 위치에 맞는 행과 열을 찾아서 변경
-result.loc[result["name"]=="임꺽정","age"]=31   # 칼럼의 데이터값을 찾아서 변경
+# #요소값 수정
+# result.at["a", 'city']="Choenan" # 위치에 맞는 행과 열을 찾아서 변경
+# result.loc[result["name"]=="임꺽정","age"]=31   # 칼럼의 데이터값을 찾아서 변경
+# print(result)
+
+# #컬럼값 변경
+# result.rename(columns={"name":"이름", "age":"나이","city":"도시"}, inplace=True) #inplace=True : 원본데이터 수정 허락.
+# print(result)
+
+# #데이터 정렬
+# result.sort_values(by="나이",inplace=True, ascending=False) #ascending=False : 내림차순
+# print(result)
+
+# #칼럼 삭제
+# result.drop(columns=["도시"],inplace=True)
+# print(result)
+
+
+# 결측값 ################################################
+data = {
+    "Name":['홍길동','임꺽정','성춘향'],
+    "Age":[25,None,35],
+    "City":["서울","부산",None]
+}
+df=pd.DataFrame(data)
+# print(df)
+# print(df.isnull()) # 결측값 여부
+# print(df.isnull().sum()) # 각 컬럼마다 결측값 갯수 반환
+# print(df.info())
+
+# df_drop=df.dropna() # 결측값 있는 행을 아예 삭제해버림
+# df_drop_column=df.dropna(axis=1) # 결측값 있는 열을 아예 삭제해버림
+# print(df_drop_column)
+
+# df_filled=df.fillna(method="ffill") #이전에 있는 값으로 채운다.
+# print(df_filled)
+# df_filled=df.fillna(method="bfill") #이후에 있는 값으로 채운다.
+# print(df_filled)
+
+#주요메서드 ############################################################
+#isin()
+s=pd.Series(["홍길동","임꺽정","성춘향","이몽룡"])
+result=s.isin(["홍길동","이몽룡"])
+# print(result)
+
+data = {
+    'Name':["홍길동","임꺽정","성춘향:,"],
+    "Age":[25,30,20]
+}
+
+df=pd.DataFrame(data)
+result=df.isin(["성춘향","홍길동",20])
+# print(result)
+
+restult=df[df['Name'].isin(["성춘향",'홍길동',20])]
+# print(result)
+
+s=pd.Series([1,2,None])
+result=s.isin([None,2])
+# print(restult)
+
+#Value_counts()
+s=pd.Series(["사과","바나나","사과","오렌지","바나나","사과"])
+# print(s.value_counts())
+
+df=pd.DataFrame(
+    {
+    "과일":["사과","바나나","사과","오렌지","바나나",None,"사과"],
+    "수량":[1,2,3,4,5,6,7]
+    }
+)
+# print(df["과일"].value_counts(normalize=True))
+# print(df["과일"].value_counts(ascending=True))
+# print(df["과일"].value_counts(dropna=False))
+
+# agg() ###################################################################################
+# s=pd.Series([1,2,3,4,5])
+# result=s.agg(['sum','mean','max'])
+# print(result)
+
+# df=pd.DataFrame({
+#     "A":[1,2,3],
+#     "B":[14,15,16]
+# })
+
+# print(df.agg(["sum","mean","max"])) # 각 컬럼마다 계산해줌.
+# print(df.agg({"A":"sum","B":"mean"})) # 각 컬럼마다 계산해줌.
+
+s1=pd.Series([10,20,30])
+s2=pd.Series([5,15,25])
+# print(s1+s2)
+# print(s1-s2)
+# print(s1*s2)
+# print(s1/s2)
+# #통계연산#############
+# print(s1.sum())
+# print(s1.mean())
+# print(s1.max())
+# print(s1.min())
+# print(s1.std())#표준편차
+# print(s1.var())#분산
+# print(s1.median())#중앙값
+
+#통계지표 #################
+# print(s1.describe())
+
+#그룹화 ###################
+# data={
+#     'group':['A','A',"B","B","C"],
+#     'value':[10,20,30,40,50]
+# }
+# df=pd.DataFrame(data)
+# result=df.groupby("group")["value"].sum()
+# print(result)
+# result=df.groupby("group")["value"].max()
+# print(result)
+# result=df.groupby("group")["value"].agg(['sum','mean','var'])
+# #         그룹을지을건데(그룹지을모집)[사용할값].메서드
+# print(result)
+
+data={
+    'group':['A','A',"B","B","C"],
+    'value1':[10,20,30,40,50],
+    'value2':[5,15,25,35,45]
+}
+df=pd.DataFrame(data)
+print(df.columns)
+# result=df.groupby('group').agg({
+#     'value1':'sum',
+#     'value2':["mean","max"]
+# })
+# print(result)
+
+result=df.groupby('group').filter(lambda x:x["value1"].sum()>30)
 print(result)
