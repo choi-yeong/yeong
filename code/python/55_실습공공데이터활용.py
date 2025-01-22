@@ -6,6 +6,7 @@ df=pd.read_csv(file_name,encoding="cp949")
 print(df.head()) # 불러오기 확인
 print(df.info()) # 결측값 감지
 df.columns=df.columns.str.strip() #공백제거
+
 print(df.columns)
 
 #공원별 총 운동기구 설치 수
@@ -26,6 +27,9 @@ print()
 
 #특정 공원 데이터 필터링
 filt="남산공원(회현)"
-print(filt,"데이터 필터링")
-filted_park=df.groupby("관리기관").filter(filt)
-print(filted_park)
+def filtering(filt):
+    print(filt,"데이터 필터링")
+    result=df.loc
+    print(result)
+
+filtering(filt)

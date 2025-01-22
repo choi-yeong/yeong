@@ -76,7 +76,7 @@ df=pd.DataFrame(data,index=['a','b','c'])
 #데이터값 추출하는 방법 ######################
 # print(df)
 # print(df.loc["b"])
-# print(df.loc["b","age"]) #b의 age부분 값 반환/
+print(df.loc["b","age"]) #b의 age부분 값 반환/
 # print(df.loc[~(df["age"]>=30)])
 # print(df.loc[:, "name"])
 # print(df.loc["a",:]) #[index,column] 따라서 전체인덱스불러올땐 [:,"name"], 전체 칼럼을 불러올땐 ["a",:]
@@ -157,7 +157,7 @@ data = {
 
 df=pd.DataFrame(data)
 result=df.isin(["성춘향","홍길동",20])
-# print(result)
+print(result)
 
 restult=df[df['Name'].isin(["성춘향",'홍길동',20])]
 # print(result)
@@ -232,11 +232,11 @@ data={
 }
 df=pd.DataFrame(data)
 print(df.columns)
-# result=df.groupby('group').agg({
-#     'value1':'sum',
-#     'value2':["mean","max"]
-# })
-# print(result)
+result=df.groupby('group').agg({
+    'value1':'sum',
+    'value2':["mean","max"]
+})
+print(result)
 
 result=df.groupby('group').filter(lambda x:x["value1"].sum()>30)
 print(result)
