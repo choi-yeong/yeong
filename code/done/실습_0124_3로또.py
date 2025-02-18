@@ -18,6 +18,8 @@ def LoTTo():
         number=1156-int(data)  # 입력한 회차의 html경로가 반대로 되어있어서 역계산해줌.
         if int(data)<601:
             messagebox.showwarning("죄송합니다.","600회 미만의 당첨결과를 준비하지 못 했습니다.")
+        elif int(data)>1155:
+            messagebox.showwarning("죄송합니다.","아직 1156회 이후 결과가 없습니다.\n조속히 업데이트하겠습니다.")
     else :
         messagebox.showwarning("오류","회차를 정수의 숫자로 입력하세요!")
     if not soup.select_one(f"body > div.popup_wrap_common.popup_print_winnum_645 > table > tbody > tr:nth-child({number}) > td:nth-child(1)"):

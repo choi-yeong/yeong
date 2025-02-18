@@ -41,3 +41,4 @@ folium.GeoJson(
     }
 ).add_to(my_map)
 my_map.save("실습_0124_2해답.html")
+
